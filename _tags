@@ -1,0 +1,49 @@
+# OASIS_START
+# DO NOT EDIT (digest: 2beabd483a6c26ee9e50be93a10acf6f)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library oasis-merlin
+"src/oasis-merlin.cmxs": use_oasis-merlin
+<src/*.ml{,i,y}>: pkg_oasis
+<src/*.ml{,i,y}>: pkg_ocamlbuild
+<src/*.ml{,i,y}>: pkg_odn
+<src/*.ml{,i,y}>: pkg_type_conv
+<src/*.ml{,i,y}>: pkg_unix
+# Executable test
+"test/test.byte": pkg_fileutils
+"test/test.byte": pkg_findlib
+"test/test.byte": pkg_oUnit
+"test/test.byte": pkg_oasis
+"test/test.byte": pkg_oasis.base
+"test/test.byte": pkg_oasis.builtin-plugins
+"test/test.byte": pkg_ocamlbuild
+"test/test.byte": pkg_odn
+"test/test.byte": pkg_pcre
+"test/test.byte": pkg_type_conv
+"test/test.byte": pkg_unix
+"test/test.byte": use_oasis-merlin
+<test/*.ml{,i,y}>: pkg_fileutils
+<test/*.ml{,i,y}>: pkg_findlib
+<test/*.ml{,i,y}>: pkg_oUnit
+<test/*.ml{,i,y}>: pkg_oasis
+<test/*.ml{,i,y}>: pkg_oasis.base
+<test/*.ml{,i,y}>: pkg_oasis.builtin-plugins
+<test/*.ml{,i,y}>: pkg_ocamlbuild
+<test/*.ml{,i,y}>: pkg_odn
+<test/*.ml{,i,y}>: pkg_pcre
+<test/*.ml{,i,y}>: pkg_type_conv
+<test/*.ml{,i,y}>: pkg_unix
+<test/*.ml{,i,y}>: use_oasis-merlin
+# OASIS_STOP

@@ -1,0 +1,3 @@
+PKG oasis
+B _build/**
+S src/**

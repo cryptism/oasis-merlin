@@ -1,0 +1,34 @@
+OASISFormat: 0.4
+Name:        oasis-merlin
+Version:     0.1
+Synopsis:    .merlin file autogeneration OASIS plugin
+Authors:     Joe Whittles
+License:     MIT
+BuildType:   ocamlbuild (0.4)
+BuildTools:  ocamlbuild
+Plugins: META (0.4), DevFiles (0.4)
+
+Library "oasis-merlin"
+  Path:       src
+  Modules:    OASISMerlin
+  BuildDepends: oasis (= 0.4.6), ocamlbuild, unix, odn (>= 0.0.11), type_conv
+  XMETADescription: Infer Merlin config through OASIS
+  XMETAExtraLines: plugin_system = "oasis"
+                   plugin_name = "oasis-merlin"
+
+  CompiledObject: Best
+
+Executable test
+  Path: test
+  MainIs: test.ml
+  Install: false
+  CompiledObject: byte
+  BuildDepends: oUnit (>= 2.0.0), findlib, fileutils (>= 0.4.2),
+                oasis (= 0.4.6), oasis.base, pcre, oasis-merlin,
+                oasis.builtin-plugins
+
+Test main
+  Type: custom (0.3)
+  Command: $test -oasis $oasis -is-native $is_native -native-dynlink $native_dynlink -ocamlmod $ocamlmod
+  WorkingDirectory: test
+  TestTools: oasis, test, ocamlmod
