@@ -6,26 +6,27 @@ Authors:     Joe Whittles
 License:     MIT
 BuildType:   ocamlbuild (0.4)
 BuildTools:  ocamlbuild
-Plugins: META (0.4), DevFiles (0.4)
+Plugins:     META (0.4), DevFiles (0.4)
 
 Library "oasis-merlin"
-  Path:       src
-  Modules:    OASISMerlin
-  BuildDepends: oasis (= 0.4.6), ocamlbuild, unix, odn (>= 0.0.11), type_conv
+  Path:             src
+  Modules:          OASISMerlin
+  InternalModules:  OASISMerlinGettext
+  BuildDepends:     oasis (> 0.4.7)
   XMETADescription: Infer Merlin config through OASIS
-  XMETAExtraLines: plugin_system = "oasis"
-                   plugin_name = "oasis-merlin"
+  XMETAExtraLines:  plugin_system = "oasis"
+                    plugin_name = "Merlin"
 
   CompiledObject: Best
 
 Executable test
-  Path: test
-  MainIs: test.ml
-  Install: false
+  Path:           test
+  MainIs:         test.ml
+  Install:        false
   CompiledObject: byte
-  BuildDepends: oUnit (>= 2.0.0), findlib, fileutils (>= 0.4.2),
-                oasis (= 0.4.6), oasis.base, pcre, oasis-merlin,
-                oasis.builtin-plugins
+  BuildDepends:   oUnit (>= 2.0.0), findlib, fileutils (>= 0.4.2),
+                  oasis (> 0.4.7), oasis.base, pcre, oasis-merlin,
+                  oasis.builtin-plugins
 
 Test main
   Type: custom (0.3)
