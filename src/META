@@ -1,14 +1,14 @@
 # OASIS_START
-# DO NOT EDIT (digest: ebc29b4356076cb78f8bd691c9373987)
+# DO NOT EDIT (digest: ae051954172d47470e7211849e3c19b2)
 version = "0.1"
 description = "Infer Merlin config through OASIS"
-requires = "oasis ocamlbuild unix odn type_conv"
+requires = "oasis"
 archive(byte) = "oasis-merlin.cma"
 archive(byte, plugin) = "oasis-merlin.cma"
 archive(native) = "oasis-merlin.cmxa"
 archive(native, plugin) = "oasis-merlin.cmxs"
 plugin_system = "oasis"
-plugin_name = "oasis-merlin"
+plugin_name = "Merlin"
 exists_if = "oasis-merlin.cma"
 # OASIS_STOP
 

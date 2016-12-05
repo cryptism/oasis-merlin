@@ -2,7 +2,7 @@
     @author Joe Whittles
   *)
 
-open OASISGettext
+open OASISMerlinGettext
 open OASISTypes
 open OASISValues
 open OASISFileTemplate
@@ -139,16 +139,18 @@ let main ctxt pkg =
   let fmt = Format.formatter_of_buffer buff in
   pp_print_merlin pkg t fmt;
   OASISPlugin.add_file
-    (template_of_string_list
-       ~ctxt:ctxt.OASISPlugin.ctxt
-       ~template:true
+    (template_make
        ".merlin"
        comment_sh
+       []
        (OASISString.split_newline
           ~do_trim:false
-          (Buffer.contents buff)))
+          (Buffer.contents buff))
+       [])
       ctxt
 
 let init () =
   Extra.register_act self_id main;
-  register_generator_package all_id pivot_data generator;
+  register_generator_package all_id pivot_data generator
+
+let () = init ()
